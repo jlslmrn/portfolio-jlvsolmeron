@@ -72,7 +72,7 @@ export function Process() {
         >
           <a
             href="#booking"
-            className="inline-flex px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+            className="inline-flex px-8 py-4 bg-[var(--button-bg-color)] hover:bg-[var(--button-hover)] text-white rounded-lg transition-colors hover:shadow-lg active:translate-y-0 active:scale-[0.98]"
           >
             Start Your Project
           </a>

@@ -8,12 +8,13 @@ import { LinkedinIcon } from "./LinkedinIcon";
 export function Hero() {
   return (
     <section className="relative min-h-[100svh] flex items-center overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_50%_50%,rgba(14,165,233,.12)_0%,transparent_60%),radial-gradient(ellipse_50%_50%_at_85%_25%,rgba(236,72,153,.12)_0%,transparent_60%)]"></div>
-      <div className="mid-grid-animation absolute inset-0 opacity-100 [background-image:linear-gradient(rgba(236,72,153,.4)_1px,transparent_1px),linear-gradient(90deg,rgba(236,72,153,.4)_1px,transparent_1px)] [background-size:72px_72px]" />
-      <div className="absolute inset-0 from-black/80 via-black/60 to-black/40" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_50%_50%,var(--hero-radial-1)_0%,transparent_60%),radial-gradient(ellipse_50%_50%_at_85%_25%,var(--hero-radial-2)_0%,transparent_60%)]" />
+      <div className="mid-grid-animation absolute inset-0 opacity-100 [background-image:linear-gradient(var(--hero-grid)_1px,transparent_1px),linear-gradient(90deg,var(--hero-grid)_1px,transparent_1px)] [background-size:72px_72px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--hero-overlay-from),var(--hero-overlay-via),var(--hero-overlay-to))]" />
+
       <CyberpunkCanvas />
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-20">
-        <div className="max-w-2xl">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-20 w-full">
+        <div className="max-w-2xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -24,7 +25,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-sm font-medium"
+              className="text-sm font-medium mx-auto"
             >
               Philippines • Available for remote work
             </motion.p>
@@ -33,42 +34,48 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
+              className="m-0 text-center text-[clamp(1.4rem,7.5vmin,4.5rem)] font-bold leading-[1.05]"
             >
-              You can now sleep.
+              <span className="block whitespace-nowrap">
+                You can now sleep.
+              </span>
+              <span
+                className="block whitespace-nowrap hero-gradient-text hero-glow"
+              >
+                AI systems run 24/7
+              </span>
+              <span className="block whitespace-nowrap">Focus on growth.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-xl md:text-2xl max-w-xl"
+              className="mt-7 text-xl md:text-2xl max-w-xl leading-relaxed mx-auto"
             >
-              I'm a Web Developer Team Lead with 5+ years of experience in
-              enterprise e-commerce systems, API integrations, and workflow
-              automation.
+              I build internal tools, automation, and systems that keep your
+              business running without manual work.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-4 pt-4 justify-center"
             >
               <a
                 href="#booking"
-                className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors inline-flex items-center justify-center gap-2"
+                className="px-8 py-4 bg-[var(--button-bg-color)] text-white rounded-lg inline-flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[var(--button-hover)] hover:shadow-lg hover:-translate-y-[1px] active:translate-y-0 active:scale-[0.98]"
               >
                 <CalendarSync className="h-4 w-4" />
                 <span>Book a Discovery Call</span>
               </a>
               <a
                 href="#projects"
-                className="px-8 py-4  hover:bg-white/20 border border-white/20 rounded-lg transition-color inline-flex items-center justify-center gap-2"
+                className="px-8 py-4 border border-white/20 rounded-lg inline-flex items-center justify-center gap-2 transition-all duration-200 hover:bg-white/40 hover:border-white/40 hover:shadow-md active:scale-[0.98]"
               >
-                <FastForward className="h-4 w-4"/>
+                <FastForward className="h-4 w-4" />
                 <span>View My Work</span>
-                
               </a>
             </motion.div>
 
@@ -86,7 +93,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1 }}
-              className="flex gap-4 pt-2"
+              className="flex gap-4 pt-2 justify-center"
             >
               <a
                 href="mailto:jlvsolmeron@gmail.com"

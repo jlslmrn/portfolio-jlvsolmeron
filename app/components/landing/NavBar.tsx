@@ -36,16 +36,11 @@ export function NavBar() {
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
             <div className="flex items-center justify-between h-16">
-              <button
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="font-semibold text-foreground hover:text-blue-600 transition-colors"
-              >
-                John Lorenz Solmeron
-              </button>
-
               <div className="flex items-center gap-8">
                 <button
-                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
                   className="text-sm text-foreground hover:text-blue-600 transition-colors"
                 >
                   Home
@@ -56,10 +51,19 @@ export function NavBar() {
                 >
                   How I Work
                 </button>
+                <button
+                //   onClick={() => scrollToSection("how-i-work")}
+                  className="text-sm text-foreground hover:text-blue-600 transition-colors"
+                >
+                  About
+                </button>
+              </div>
+
+              <div className="flex items-center gap-8">
                 <ThemeToggle />
                 <button
                   onClick={() => scrollToSection("booking")}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm"
+                  className="px-4 py-2 bg-[var(--button-bg-color)] hover:bg-[var(--button-hover)] text-white rounded-lg transition-colors text-sm hover:shadow-lg active:translate-y-0 active:scale-[0.98]"
                 >
                   Let&apos;s Talk
                 </button>

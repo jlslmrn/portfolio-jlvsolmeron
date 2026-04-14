@@ -32,13 +32,13 @@ export function CtaFooter() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <a
               href="#booking"
-              className="px-8 py-4 bg-white text-blue-600 hover:bg-white/90 rounded-lg transition-colors inline-flex items-center justify-center font-medium"
+              className="px-8 py-4 bg-white text-[var(--button-bg-color)] hover:bg-white/90 rounded-lg transition-colors inline-flex items-center justify-center font-medium hover:shadow-lg hover:-translate-y-[1px] active:translate-y-0 active:scale-[0.98]"
             >
               Book a Call
             </a>
             <a
               href="mailto:jlvsolmeron@gmail.com"
-              className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm border-2 border-white/30 rounded-lg transition-colors inline-flex items-center justify-center font-medium"
+              className="px-8 py-4 bg-[var(--button-bg-color)] hover:bg-[var(--button-hover)] text-white backdrop-blur-sm border-2 border-white/30 rounded-lg transition-colors inline-flex items-center justify-center font-medium hover:shadow-lg hover:-translate-y-[1px] active:translate-y-0 active:scale-[0.98]"
             >
               Send a Message
             </a>

@@ -21,6 +21,24 @@ type Wave = {
   color: string;
 };
 
+type Palette = {
+  sky: string;
+  pink: string;
+  lime: string;
+};
+
+const LIGHT_PALETTE: Palette = {
+  sky: "#3B82F68C",
+  pink: "#8B5CF673",
+  lime: "#10B98166",
+};
+
+const DARK_PALETTE: Palette = {
+  sky: "#3A82FFD9",
+  pink: "#C084FCB3",
+  lime: "#22C55EA6",
+};
+
 export function CyberpunkCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -32,6 +50,12 @@ export function CyberpunkCanvas() {
     if (!ctx) return;
 
     const particles: Particle[] = [];
+    const getPalette = (): Palette => {
+      return document.documentElement.dataset.theme === "dark"
+        ? DARK_PALETTE
+        : LIGHT_PALETTE;
+    };
+    let palette = getPalette();
     const waves: Wave[] = [];
 
     const makeParticles = (width: number, height: number) => {
@@ -41,7 +65,7 @@ export function CyberpunkCanvas() {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          size: Math.random() * 2.6 + 0.6,
+          size: Math.random() * 8 + 0.6,
           speedX: (Math.random() - 0.5) * 0.35,
           speedY: Math.random() * 0.9 + 0.25,
           opacity: Math.random() * 0.9 + 0.1,
@@ -96,7 +120,11 @@ export function CyberpunkCanvas() {
         }
 
         const color =
-          particle.hue === "sky" ? "#38bdf8" : particle.hue === "pink" ? "#ec4899" : "#84cc16";
+          particle.hue === "sky"
+            ? palette.sky
+            : particle.hue === "pink"
+              ? palette.pink
+              : palette.lime;
 
         ctx.save();
         ctx.globalAlpha = particle.opacity * (0.8 + Math.sin(time * 4 + particle.x * 0.01) * 0.2);
@@ -138,9 +166,19 @@ export function CyberpunkCanvas() {
 
     draw();
 
+    const themeObserver = new MutationObserver(() => {
+      palette = getPalette();
+    });
+
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
     return () => {
       window.removeEventListener("resize", resize);
       window.cancelAnimationFrame(frameId);
+      themeObserver.disconnect();
     };
   }, []);
 
