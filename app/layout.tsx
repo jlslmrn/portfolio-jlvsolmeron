@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
-const geistSans = Geist({
+const inter = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const themeInitScript = `
+  try {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark" || savedTheme === "light") {
+      document.documentElement.dataset.theme = savedTheme;
+    }
+  } catch {}
+`;
+
 
 export const metadata: Metadata = {
-  title: "Minimalist Portfolio Design",
+  title: "John Lorenz Solmeron | Landing Page",
   description:
-    "Showcase your professional identity with a minimalist portfolio that highlights your skills, education, achievements, and projects for potential employers.",
-  robots: {
-    index: false,
-    follow: false,
-  },
+    "Web developer landing page focused on enterprise systems, automation workflows, and product development.",
 };
 
 export default function RootLayout({
@@ -30,8 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} antialiased`}
       >
+        <Script id="theme-init" strategy="beforeInteractive">
+          {themeInitScript}
+        </Script>
         {children}
       </body>
     </html>

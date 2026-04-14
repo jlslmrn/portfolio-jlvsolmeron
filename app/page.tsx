@@ -1,23 +1,29 @@
 import {
-  Achievements,
-  Education,
-  Footer,
-  PersonalInfo,
+  Background,
+  Booking,
+  BuildList,
+  CtaFooter,
+  Hero,
+  Highlights,
+  NavBar,
+  Process,
   Projects,
-  Skills,
-  WorkExperience,
-} from "./components";
+  Services,
+} from "./components/landing";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
-      <PersonalInfo />
-      <Skills />
-      <WorkExperience />
+    <main className="min-h-screen bg-background">
+      <NavBar />
+      <Hero />
+      <Highlights />
+      <Services />
       <Projects />
-      <Education />
-      <Achievements />
-      <Footer />
-    </div>
+      <Process />
+      <Background />
+      <BuildList />
+      <Booking />
+      <CtaFooter />
+    </main>
   );
 }

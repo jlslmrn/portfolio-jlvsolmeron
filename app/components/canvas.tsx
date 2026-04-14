@@ -1,0 +1,148 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
+type Particle = {
+  x: number;
+  y: number;
+  size: number;
+  speedX: number;
+  speedY: number;
+  opacity: number;
+  hue: "sky" | "pink" | "lime";
+};
+
+type Wave = {
+  x: number;
+  y: number;
+  radius: number;
+  speed: number;
+  alpha: number;
+  color: string;
+};
+
+export function CyberpunkCanvas() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const particles: Particle[] = [];
+    const waves: Wave[] = [];
+
+    const makeParticles = (width: number, height: number) => {
+      particles.length = 0;
+
+      for (let i = 0; i < 220; i += 1) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          size: Math.random() * 2.6 + 0.6,
+          speedX: (Math.random() - 0.5) * 0.35,
+          speedY: Math.random() * 0.9 + 0.25,
+          opacity: Math.random() * 0.9 + 0.1,
+          hue: i % 5 === 0 ? "lime" : i % 2 === 0 ? "pink" : "sky",
+        });
+      }
+    };
+
+    // const makeWaves = (width: number, height: number) => {
+    //   waves.length = 0;
+
+    //   for (let i = 0; i < 7; i += 1) {
+    //     waves.push({
+    //       x: Math.random() * width,
+    //       y: Math.random() * height,
+    //       radius: Math.random() * 120,
+    //       speed: Math.random() * 1.8 + 0.9,
+    //       alpha: Math.random() * 0.24 + 0.08,
+    //       color: i % 2 === 0 ? "#0ea5e9" : "#ec4899",
+    //     });
+    //   }
+    // };
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      makeParticles(canvas.width, canvas.height);
+    //   makeWaves(canvas.width, canvas.height);
+    };
+
+    resize();
+    window.addEventListener("resize", resize);
+
+    let frameId = 0;
+    let time = 0;
+
+    const draw = () => {
+      time += 0.015;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (const particle of particles) {
+        particle.x += particle.speedX + Math.sin(time + particle.y * 0.001) * 0.06;
+        particle.y -= particle.speedY;
+
+        if (particle.y < -24) {
+          particle.y = canvas.height + 24;
+          particle.x = Math.random() * canvas.width;
+        }
+
+        if (particle.x < -24 || particle.x > canvas.width + 24) {
+          particle.x = Math.random() * canvas.width;
+        }
+
+        const color =
+          particle.hue === "sky" ? "#38bdf8" : particle.hue === "pink" ? "#ec4899" : "#84cc16";
+
+        ctx.save();
+        ctx.globalAlpha = particle.opacity * (0.8 + Math.sin(time * 4 + particle.x * 0.01) * 0.2);
+        ctx.fillStyle = color;
+        ctx.shadowBlur = 14;
+        ctx.shadowColor = color;
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+    //   for (const wave of waves) {
+    //     wave.radius += wave.speed;
+
+    //     if (wave.radius > canvas.width * 1.1) {
+    //       wave.x = Math.random() * canvas.width;
+    //       wave.y = Math.random() * canvas.height;
+    //       wave.radius = 0;
+    //     }
+
+    //     ctx.save();
+    //     ctx.globalAlpha = wave.alpha * (1 - wave.radius / (canvas.width * 1.1));
+    //     ctx.strokeStyle = wave.color;
+    //     ctx.setLineDash([4, 8]);
+    //     ctx.lineDashOffset = time * 45;
+
+    //     for (let i = 0; i < 3; i += 1) {
+    //       ctx.beginPath();
+    //       ctx.arc(wave.x, wave.y, wave.radius + i * 20, 0, Math.PI * 2);
+    //       ctx.stroke();
+    //     }
+
+    //     ctx.restore();
+    //   }
+
+      frameId = window.requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    return () => {
+      window.removeEventListener("resize", resize);
+      window.cancelAnimationFrame(frameId);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="pointer-events-none absolute inset-0" />;
+}
