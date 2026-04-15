@@ -57,7 +57,7 @@ export function Booking() {
           >
             <div
               className="calendly-inline-widget"
-              data-url="https://calendly.com/YOUR_CALENDLY_USERNAME/discovery-call?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=2563eb"
+              data-url="https://calendly.com/jlvsolmeron/discovery-call-with-jl?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=2563eb"
               style={{ minWidth: "320px", height: "700px" }}
             />
           </motion.div>
