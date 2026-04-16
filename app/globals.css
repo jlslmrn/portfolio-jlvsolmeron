@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F8FAFC;
-  --foreground: #0F172A;
-  --card: #F8FAFC;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #f8fafc;
   --muted: #ececf0;
-  --muted-foreground: #64748B;
+  --muted-foreground: #64748b;
   --border: rgba(0, 0, 0, 0.1);
-  --hero-radial-1: rgba(139,92, 246, 0.08);
+  --hero-radial-1: rgba(139, 92, 246, 0.08);
   --hero-radial-2: rgba(16, 185, 129, 0.06);
   --hero-grid: rgba(59, 130, 246, 0.12);
   --hero-overlay-from: rgba(255, 255, 255, 0.55);
@@ -15,16 +15,17 @@
   --hero-overlay-to: rgba(255, 255, 255, 0.15);
   --button-bg-color: #3b82f6;
   --button-hover: #2563eb;
+  --bg-section-color: #3b82f6;
 
   color-scheme: light;
 }
 
 :root[data-theme="dark"] {
-  --background: #0C1120;
-  --foreground: #F8FAFC;
-  --card: #0C1120;
+  --background: #0c1120;
+  --foreground: #f8fafc;
+  --card: #0c1120;
   --muted: #1f2937;
-  --muted-foreground: #94A3B8;
+  --muted-foreground: #94a3b8;
   --border: rgba(255, 255, 255, 0.16);
   --hero-radial-1: rgba(192, 132, 252, 0.12);
   --hero-radial-2: rgba(34, 197, 94, 0.12);
@@ -32,9 +33,16 @@
   --hero-overlay-from: rgba(0, 0, 0, 0.8);
   --hero-overlay-via: rgba(0, 0, 0, 0.6);
   --hero-overlay-to: rgba(0, 0, 0, 0.4);
-  --button-bg-color: #3a82ff;
-  --button-hover: #1f6fe6;
-  
+  --button-bg-color: rgba(78, 70, 229, 0.322);
+  --button-hover: 1px solid rgba(99, 102, 241, 0.3);
+  --button-border: 1px solid rgba(99, 102, 241, 0.3);
+  --bg-section-color: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.7) 0%,
+    rgba(30, 41, 59, 0.75) 60%,
+    rgba(59, 130, 246, 0.4) 100%
+  );
+
   color-scheme: dark;
 }
 
@@ -63,25 +71,21 @@ html {
 }
 
 .hero-gradient-text {
-  background: linear-gradient(to right, #3B82F6, #8B5CF6, #10B981);
+  background: linear-gradient(to right, #3b82f6, #8b5cf6, #10b981);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .hero-glow {
-  filter:
-    drop-shadow(0 0 4px rgba(59,130,246,0.2))
-    drop-shadow(0 0 10px rgba(139,92,246,0.12));
+  filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.2))
+    drop-shadow(0 0 10px rgba(139, 92, 246, 0.12));
 }
 
 [data-theme="dark"] .hero-glow {
-  filter:
-    drop-shadow(0 0 6px rgba(58,130,255,0.35))
-    drop-shadow(0 0 16px rgba(192,132,252,0.25))
-    drop-shadow(0 0 32px rgba(34,197,94,0.18));
+  filter: drop-shadow(0 0 6px rgba(58, 130, 255, 0.35))
+    drop-shadow(0 0 16px rgba(192, 132, 252, 0.25))
+    drop-shadow(0 0 32px rgba(34, 197, 94, 0.18));
 }
-
-
 
 :root[data-theme="dark"] .theme-toggle-sun {
   display: block;

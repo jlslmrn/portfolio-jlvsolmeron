@@ -65,14 +65,14 @@ export function Hero() {
             >
               <a
                 href="#booking"
-                className="px-8 py-4 bg-[var(--button-bg-color)] text-white rounded-lg inline-flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[var(--button-hover)] hover:shadow-lg hover:-translate-y-[1px] active:translate-y-0 active:scale-[0.98]"
+                className="px-8 py-4 bg-[var(--button-bg-color)] backdrop-blur-[10px] border border-(var(--button-border)) text-white rounded-lg inline-flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[var(--button-hover)] hover:shadow-lg hover:-translate-y-[2px] active:translate-y-0 active:scale-[0.98]"
               >
                 <CalendarSync className="h-4 w-4" />
                 <span>Book a Discovery Call</span>
               </a>
               <a
                 href="#projects"
-                className="px-8 py-4 border border-white/20 rounded-lg inline-flex items-center justify-center gap-2 transition-all duration-200 hover:bg-white/40 hover:border-white/40 hover:shadow-md active:scale-[0.98]"
+                className="px-8 py-4 border border-white/20 rounded-lg inline-flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[var(--button-bg-color)] hover:border-white/40 hover:shadow-md active:scale-[0.98]"
               >
                 <FastForward className="h-4 w-4" />
                 <span>View My Work</span>
