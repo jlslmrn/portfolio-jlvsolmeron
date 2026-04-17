@@ -31,8 +31,8 @@ export function Projects() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              <div className="h-full p-8 rounded-xl border border-border hover:border-blue-600/50 transition-all bg-card">
-                <div className="flex items-start justify-between mb-4">
+              <div className="h-full p-8 rounded-xl border border-border transition-all bg-card">
+                <div className="flex items-start justify-between mb-4 gap-1">
                   <h3 className="text-2xl font-semibold text-foreground group-hover:text-[var(--icon-color)] transition-colors">
                     {project.title}
                   </h3>

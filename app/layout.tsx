@@ -20,7 +20,7 @@ const themeInitScript = `
 
 
 export const metadata: Metadata = {
-  title: "John Lorenz Solmeron | Landing Page",
+  title: "JL Solmeron | Portfolio",
   description:
     "Web developer landing page focused on enterprise systems, automation workflows, and product development.",
 };

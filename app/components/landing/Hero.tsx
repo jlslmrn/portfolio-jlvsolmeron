@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { Mail, FastForward, CalendarSync } from "lucide-react";
-import { CyberpunkCanvas } from "../canvas";
+import { HeroCanvas } from "../canvasHero";
 import { LinkedinIcon } from "./LinkedinIcon";
 
 export function Hero() {
@@ -12,7 +12,7 @@ export function Hero() {
       <div className="mid-grid-animation absolute inset-0 opacity-100 [background-image:linear-gradient(var(--hero-grid)_1px,transparent_1px),linear-gradient(90deg,var(--hero-grid)_1px,transparent_1px)] [background-size:72px_72px]" />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--hero-overlay-from),var(--hero-overlay-via),var(--hero-overlay-to))]" />
 
-      <CyberpunkCanvas />
+      <HeroCanvas />
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-20 w-full">
         <div className="max-w-2xl mx-auto text-center">
           <motion.div
@@ -39,9 +39,7 @@ export function Hero() {
               <span className="block whitespace-nowrap">
                 You can now sleep.
               </span>
-              <span
-                className="block whitespace-nowrap hero-gradient-text hero-glow"
-              >
+              <span className="block whitespace-nowrap hero-gradient-text hero-glow">
                 AI systems run 24/7
               </span>
               <span className="block whitespace-nowrap">Focus on growth.</span>
@@ -97,7 +95,7 @@ export function Hero() {
             >
               <a
                 href="mailto:jlvsolmeron@gmail.com"
-                className="hover:text-white transition-colors"
+                className="hover:text-[var(--icon-color)] transition-colors"
                 aria-label="Email"
               >
                 <Mail size={24} />
@@ -106,7 +104,7 @@ export function Hero() {
                 href="https://linkedin.com/in/jlvsolmeron"
                 target="_blank"
                 rel="noopener noreferrer"
-                className=" hover:text-white transition-colors"
+                className=" hover:text-[var(--icon-color)] transition-colors"
                 aria-label="LinkedIn"
               >
                 <LinkedinIcon size={24} />
@@ -128,8 +126,8 @@ export function Hero() {
         }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full p-1">
-          <div className="w-1.5 h-1.5 bg-white rounded-full mx-auto" />
+        <div className="w-6 h-10 border-2 border-[var(--foreground)] rounded-full p-1">
+          <div className="w-1.5 h-1.5 bg-[var(--foreground)] rounded-full mx-auto" />
         </div>
       </motion.div>
     </section>

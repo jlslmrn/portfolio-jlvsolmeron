@@ -39,7 +39,7 @@ const DARK_PALETTE: Palette = {
   lime: "#22C55EA6",
 };
 
-export function CyberpunkCanvas() {
+export function HeroCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -68,7 +68,7 @@ export function CyberpunkCanvas() {
           size: Math.random() * 8 + 0.6,
           speedX: (Math.random() - 0.5) * 0.35,
           speedY: Math.random() * 0.9 + 0.25,
-          opacity: Math.random() * 0.9 + 0.1,
+          opacity: (Math.random() * 0.9 + 0.1) * 0.8,
           hue: i % 5 === 0 ? "lime" : i % 2 === 0 ? "pink" : "sky",
         });
       }

@@ -18,6 +18,26 @@
   --bg-section-color: #3b82f6;
   --icon-color: rgba(59, 130, 246, 0.952);
   --text-hover: #3b82f6;
+  --about-text-hover: #a8c5f3e8;
+  --bg-about-color: #f8fafc;
+  --about-radial-soft:
+    radial-gradient(
+      circle at 70% 25%,
+      rgba(59, 131, 246, 0.164),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 30% 75%,
+      rgba(47, 57, 190, 0.151),
+      transparent 35%
+    );
+  --button-footer-color: #3b82f6;
+  --footer-radial-1: rgba(139, 92, 246, 0.08);
+  --footer-radial-2: rgba(16, 185, 129, 0.06);
+  --footer-grid: rgba(59, 130, 246, 0.12);
+  --footer-overlay-from: rgba(255, 255, 255, 0.55);
+  --footer-overlay-via: rgba(255, 255, 255, 0.35);
+  --footer-overlay-to: rgba(255, 255, 255, 0.15);
 
   color-scheme: light;
 }
@@ -46,6 +66,30 @@
   );
   --icon-color: rgba(78, 70, 229, 0.952);
   --text-hover: rgba(115, 108, 245, 0.973);
+  --about-text-hover: rgba(115, 108, 245, 0.973);
+  --bg-about-color: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.7) 0%,
+    rgba(30, 41, 59, 0.75) 60%,
+    rgba(59, 130, 246, 0.4) 100%
+  );
+  --about-radial-soft:
+    radial-gradient(
+      circle at 70% 25%,
+      rgba(58, 130, 255, 0.12),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 30% 75%,
+      rgba(192, 132, 252, 0.08),
+      transparent 40%
+    );
+  --footer-radial-1: rgba(192, 132, 252, 0.12);
+  --footer-radial-2: rgba(34, 197, 94, 0.12);
+  --footer-grid: rgba(58, 130, 255, 0.4);
+  --footer-overlay-from: rgba(0, 0, 0, 0.8);
+  --footer-overlay-via: rgba(0, 0, 0, 0.6);
+  --footer-overlay-to: rgba(0, 0, 0, 0.4);
 
   color-scheme: dark;
 }
@@ -88,7 +132,7 @@ html {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shine 3s linear infinite;
+  animation: shine 1s linear infinite;
 }
 
 @keyframes shine {

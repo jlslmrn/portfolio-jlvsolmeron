@@ -17,7 +17,7 @@ export function Booking() {
   }, []);
 
   return (
-    <section id="booking" className="py-24 bg-background">
+    <section id="booking" className="py-24 bg-muted/50">
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -43,7 +43,7 @@ export function Booking() {
             <div className="flex gap-3 mb-4">
               <Lightbulb className="w-6 h-6 text-[var(--icon-color)] flex-shrink-0" />
               <p className="text-foreground font-medium">
-                No pressure — this is just a short call to understand what you need and whether I&apos;m a good fit.
+                No pressure — this is just a short call to understand what you need and whether I&apos;m a good fit. It's for free!
               </p>
             </div>
           </motion.div>
