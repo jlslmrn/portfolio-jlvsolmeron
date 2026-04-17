@@ -45,7 +45,7 @@ export function Process() {
                   <div className="flex md:flex-col items-center md:items-start gap-4 md:gap-2">
                     <div className="text-6xl font-bold text-blue-600/20 leading-none">{step.number}</div>
                     <div className="p-3 bg-blue-600/10 rounded-lg group-hover:bg-blue-600/20 transition-colors">
-                      <StepIcon className="w-6 h-6 text-blue-600" />
+                      <StepIcon className="w-6 h-6 text-[var(--icon-color)]" />
                     </div>
                   </div>
 

@@ -16,6 +16,8 @@
   --button-bg-color: #3b82f6;
   --button-hover: #2563eb;
   --bg-section-color: #3b82f6;
+  --icon-color: rgba(59, 130, 246, 0.952);
+  --text-hover: #3b82f6;
 
   color-scheme: light;
 }
@@ -34,7 +36,7 @@
   --hero-overlay-via: rgba(0, 0, 0, 0.6);
   --hero-overlay-to: rgba(0, 0, 0, 0.4);
   --button-bg-color: rgba(78, 70, 229, 0.322);
-  --button-hover: 1px solid rgba(99, 102, 241, 0.3);
+  --button-hover: rgba(69, 71, 180, 0.589);
   --button-border: 1px solid rgba(99, 102, 241, 0.3);
   --bg-section-color: linear-gradient(
     135deg,
@@ -42,6 +44,8 @@
     rgba(30, 41, 59, 0.75) 60%,
     rgba(59, 130, 246, 0.4) 100%
   );
+  --icon-color: rgba(78, 70, 229, 0.952);
+  --text-hover: rgba(115, 108, 245, 0.973);
 
   color-scheme: dark;
 }
@@ -68,6 +72,29 @@ html {
 
 * {
   border-color: var(--border);
+}
+
+.text-shine {
+  background: linear-gradient(
+    120deg,
+    #a5b4fc 20%,
+    #6366f1 35%,
+    #818cf8 50%,
+    #6366f1 65%,
+    #a5b4fc 80%
+  );
+  background-size: 250% auto;
+  background-position: 0% center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 250% center;
+  }
 }
 
 .hero-gradient-text {

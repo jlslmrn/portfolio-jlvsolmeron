@@ -41,7 +41,7 @@ export function Booking() {
             className="p-6 bg-blue-600/5 border border-blue-600/20 rounded-xl"
           >
             <div className="flex gap-3 mb-4">
-              <Lightbulb className="w-6 h-6 text-blue-600 flex-shrink-0" />
+              <Lightbulb className="w-6 h-6 text-[var(--icon-color)] flex-shrink-0" />
               <p className="text-foreground font-medium">
                 No pressure — this is just a short call to understand what you need and whether I&apos;m a good fit.
               </p>

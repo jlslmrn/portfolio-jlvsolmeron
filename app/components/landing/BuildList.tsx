@@ -28,7 +28,7 @@ export function BuildList() {
               transition={{ duration: 0.4, delay: index * 0.05 }}
               className="flex items-center gap-3 p-4 bg-muted/50 rounded-lg border border-border"
             >
-              <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0" />
+              <CheckCircle2 className="w-5 h-5 text-[var(--icon-color)] flex-shrink-0" />
               <span className="text-foreground font-medium capitalize">{item}</span>
             </motion.div>
           ))}

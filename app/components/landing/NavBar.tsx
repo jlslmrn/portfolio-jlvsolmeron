@@ -43,31 +43,31 @@ export function NavBar() {
                   onClick={() =>
                     window.scrollTo({ top: 0, behavior: "smooth" })
                   }
-                  className="text-xs sm:text-sm whitespace-nowrap text-foreground hover:text-blue-600 transition-colors"
+                  className="font-bold text-xs sm:text-sm whitespace-nowrap text-foreground hover:text-[var(--text-hover)] transition-colors"
                 >
                   Home
                 </button>
 
                 <button
                   onClick={() => scrollToSection("how-i-work")}
-                  className="text-xs sm:text-sm whitespace-nowrap text-foreground hover:text-blue-600 transition-colors"
+                  className="font-bold text-xs sm:text-sm whitespace-nowrap text-foreground hover:text-[var(--text-hover)] transition-colors"
                 >
                   How I Work
                 </button>
 
-                <button className="text-xs sm:text-sm whitespace-nowrap text-foreground hover:text-blue-600 transition-colors">
+                <button className="font-bold text-xs sm:text-sm whitespace-nowrap text-foreground hover:text-[var(--text-hover)] transition-colors">
                   About
                 </button>
               </div>
 
-              <div className="flex items-center gap-2 shrink-0">
+              <div className="flex items-center gap-1 shrink-0">
                 <ThemeToggle />
 
                 <button
                   onClick={() => scrollToSection("booking")}
                   className="px-3 sm:px-4 py-2 text-xs sm:text-sm md:text-base whitespace-nowrap bg-[var(--button-bg-color)] hover:bg-[var(--button-hover)] backdrop-blur-[10px] border border-[var(--button-border)] text-white rounded-lg transition-all duration-200 hover:-translate-y-[1px] hover:shadow-lg active:translate-y-0 active:scale-[0.98]"
                 >
-                  Let&apos;s Talk
+                  <span className="font-medium">Let&apos;s Talk</span>
                 </button>
               </div>
             </div>

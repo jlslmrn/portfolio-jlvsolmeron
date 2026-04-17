@@ -15,7 +15,7 @@ export function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Selected Work</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Portfolio Projects</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Real-world solutions built for efficiency and scale
           </p>
@@ -33,7 +33,7 @@ export function Projects() {
             >
               <div className="h-full p-8 rounded-xl border border-border hover:border-blue-600/50 transition-all bg-card">
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-2xl font-semibold text-foreground group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-2xl font-semibold text-foreground group-hover:text-[var(--icon-color)] transition-colors">
                     {project.title}
                   </h3>
                   {project.link && (
@@ -41,7 +41,7 @@ export function Projects() {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-blue-600 transition-colors"
+                      className="text-muted-foreground hover:text-[var(--icon-color)] transition-colors"
                       aria-label="Visit project"
                     >
                       <ExternalLink size={20} />
@@ -55,7 +55,7 @@ export function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={`${project.title}-${tag}`}
-                      className="px-3 py-1 text-xs rounded-full bg-blue-600/10 text-blue-600 border border-blue-600/20"
+                      className="px-3 py-1 text-xs rounded-full bg-blue-600/10 text-[var(--icon-color)] border border-blue-600/20"
                     >
                       {tag}
                     </span>

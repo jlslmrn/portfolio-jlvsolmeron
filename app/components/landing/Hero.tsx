@@ -65,7 +65,7 @@ export function Hero() {
             >
               <a
                 href="#booking"
-                className="px-8 py-4 bg-[var(--button-bg-color)] backdrop-blur-[10px] border border-(var(--button-border)) text-white rounded-lg inline-flex items-center justify-center gap-2 transition-all duration-200 hover:bg-[var(--button-hover)] hover:shadow-lg hover:-translate-y-[2px] active:translate-y-0 active:scale-[0.98]"
+                className="px-8 py-4 bg-[var(--button-bg-color)] hover:bg-[var(--button-hover)] backdrop-blur-[10px] border border-(var(--button-border)) text-white rounded-lg inline-flex items-center justify-center gap-2 transition-all duration-200 hover:shadow-lg hover:-translate-y-[2px] active:translate-y-0 active:scale-[0.98]"
               >
                 <CalendarSync className="h-4 w-4" />
                 <span>Book a Discovery Call</span>
