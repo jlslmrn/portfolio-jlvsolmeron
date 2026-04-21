@@ -2,16 +2,105 @@
 
 import { motion } from "motion/react";
 import { Lightbulb } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+
+type CalendlyMessagePayload = {
+  event?: string;
+  payload?: Record<string, unknown>;
+};
+
+const CALENDLY_ORIGIN = "https://calendly.com";
+
+function isCalendlyEvent(event: MessageEvent<unknown>): event is MessageEvent<CalendlyMessagePayload> {
+  if (event.origin !== CALENDLY_ORIGIN) {
+    return false;
+  }
+
+  if (typeof event.data !== "object" || event.data === null) {
+    return false;
+  }
+
+  const data = event.data as CalendlyMessagePayload;
+  return typeof data.event === "string" && data.event.startsWith("calendly.");
+}
+
+function isObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
+}
+
+function getNestedString(obj: Record<string, unknown>, path: string[]): string | undefined {
+  let current: unknown = obj;
+  for (const segment of path) {
+    if (!isObject(current) || typeof current[segment] === "undefined") {
+      return undefined;
+    }
+    current = current[segment];
+  }
+  return typeof current === "string" ? current : undefined;
+}
+
+function buildEventDedupKey(payload: Record<string, unknown>): string {
+  const inviteeUri = getNestedString(payload, ["invitee", "uri"]);
+  const eventUri = getNestedString(payload, ["event", "uri"]);
+  const createdAt = getNestedString(payload, ["created_at"]);
+
+  return [inviteeUri ?? "no_invitee_uri", eventUri ?? "no_event_uri", createdAt ?? "no_timestamp"].join("|");
+}
 
 export function Booking() {
+  const sentEventKeysRef = useRef<Set<string>>(new Set());
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
     document.body.appendChild(script);
 
+    const onMessage = async (event: MessageEvent<unknown>) => {
+      if (!isCalendlyEvent(event) || event.data.event !== "calendly.event_scheduled") {
+        return;
+      }
+
+      const payload = isObject(event.data.payload) ? event.data.payload : {};
+      const dedupKey = buildEventDedupKey(payload);
+      if (sentEventKeysRef.current.has(dedupKey)) {
+        return;
+      }
+      sentEventKeysRef.current.add(dedupKey);
+
+      try {
+        const response = await fetch("/api/calendly/forward", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            event: event.data.event,
+            payload,
+            capture_method: "event_payload",
+            client_context: {
+              page_url: window.location.href,
+              user_agent: window.navigator.userAgent,
+            },
+          }),
+        });
+
+        if (!response.ok) {
+          console.error("[Calendly Forward] Failed to forward booking payload", {
+            status: response.status,
+            statusText: response.statusText,
+          });
+        }
+      } catch (error) {
+        console.error("[Calendly Forward] Request failed", error);
+      }
+    };
+
+    window.addEventListener("message", onMessage);
+
     return () => {
+      window.removeEventListener("message", onMessage);
+
       document.body.removeChild(script);
     };
   }, []);
@@ -76,4 +165,3 @@ export function Booking() {
     </section>
   );
 }
-
